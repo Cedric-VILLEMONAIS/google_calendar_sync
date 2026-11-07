@@ -1,7 +1,4 @@
 <p align="center">
-  <picture>
-    <img src="https://github.com/CasperTeirlinck/google_calendar_sync/blob/main/logo.png?raw=true" height="128">
-  </picture>
   <h1 align="center">Google Calendar ← ICal</h1>
   <h2 align="center">Sync ICal feeds to Google Calendar</h2>
 </p>
