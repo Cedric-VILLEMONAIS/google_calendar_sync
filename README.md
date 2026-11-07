@@ -3,10 +3,6 @@
   <h2 align="center">Sync ICal feeds to Google Calendar</h2>
 </p>
 
-<p align="center">
-  <img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/casperteirlinck/google_calendar_sync/latest?logo=docker&style=flat-square">
-</p>
-
 ## Configuration
 
 > See `config/example.config.yaml` for all available configuration options.
