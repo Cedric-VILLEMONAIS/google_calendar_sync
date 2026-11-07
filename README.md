@@ -36,11 +36,7 @@ Recurring events are supported, apart from detecting deleted recurring instances
   ```shell
   docker compose up -d
   ```
-
-  OR
-
-  Run the docker container manually, also available on [Docker Hub](https://hub.docker.com/r/casperteirlinck/google_calendar_sync)
-
+  
 - Monitoring using logfile: \
   See logfile at `logs/logfile`
 
