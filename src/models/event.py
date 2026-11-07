@@ -2,7 +2,6 @@ from dataclasses import dataclass
 import pendulum as dt
 from typing import Literal, Optional
 
-from src.models.database import Database
 from src.models.ical import ICalendar
 
 DEFAULT_EVENT_DURATION_MIN = 30
@@ -33,22 +32,6 @@ class CalendarEvent:
     recurrence_start: Optional[dt.DateTime] = None
     recurrence_id: Optional[str] = None
     google_event_id: str = ""
-
-
-@dataclass(kw_only=True)
-class NotionCalendarEvent(CalendarEvent):
-    database: Database
-    notion_page_id: str
-
-    notion_page_url: str = ""
-    icon_property_value: str = ""
-
-    # Extended properties keys on google calendar
-    # reference: https://developers.google.com/calendar/api/guides/extended-properties
-    notion_title_property_name: str = "NotionTitle"
-    notion_page_id_property_name: str = "NotionPageId"
-    notion_database_id_property_name: str = "NotionDatabaseId"
-    notion_icon_property_value_property_name: str = "NotionIconPropertyValue"
 
 
 @dataclass(kw_only=True)

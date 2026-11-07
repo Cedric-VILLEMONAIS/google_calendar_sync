@@ -9,9 +9,7 @@ from typing import Optional
 from src.models.config import Config
 from src.api_client.google import GCalendar
 from src.api_client.ical import ICal
-from src.api_client.notion import Notion
 from src.jobs.sync_ical import sync_icalendar
-from src.jobs.sync_notion import sync_database
 
 logging.basicConfig(
     format="%(asctime)s %(levelname)-8s %(message)s", level=logging.INFO
@@ -26,12 +24,7 @@ def main(push_url: Optional[str] = None):
 
     # API clients
     gcalendar = GCalendar()
-    notion = Notion()
     ical = ICal()
-
-    # Sync all notion databases
-    for database in config.databases:
-        sync_database(notion, gcalendar, database)
 
     # Sync all icalendars
     for icalendar in config.icals:

@@ -1,22 +1,21 @@
 <p align="center">
   <picture>
-    <img src="https://github.com/CasperTeirlinck/notion_google_calendar/blob/main/logo.png?raw=true" height="128">
+    <img src="https://github.com/CasperTeirlinck/google_calendar_sync/blob/main/logo.png?raw=true" height="128">
   </picture>
-  <h1 align="center">Notion → Google Calendar ← ICal</h1>
-  <h2 align="center">Sync from Notion databases and ICal feeds to Google Calendar</h2>
+  <h1 align="center">Google Calendar ← ICal</h1>
+  <h2 align="center">Sync ICal feeds to Google Calendar</h2>
 </p>
 
 <p align="center">
-  <img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/casperteirlinck/notion_google_calendar/latest?logo=docker&style=flat-square">
+  <img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/casperteirlinck/google_calendar_sync/latest?logo=docker&style=flat-square">
 </p>
 
 ## Configuration
 
 > See `config/example.config.yaml` for all available configuration options.
 
-1. Obtain the necessary API tokens from [Notion](#notion-api) and [Google](#google-api)
-2. Configure each Notion database and how its properties map to Google Calendar events in `config/config.yaml`.
-3. Configure each [ICal](#ical) feed in `config/config.yaml`.
+1. Obtain the necessary credentials from [Google](#google-api).
+2. Configure each [ICal](#ical) feed in `config/config.yaml`.
 
 ## Google API
 
@@ -25,22 +24,6 @@ Google OAuth 2.0 requires you to designate your project as either "Testing" or "
 1. Create a [Service Account](https://developers.google.com/identity/protocols/oauth2/service-account). Project permissions or IAM roles are irrelevant.
 2. Generate a key for the service account (type JSON) and store it in `secrets/google.json`
 3. In your Google Calendar UI, share every relevant calendar with the email of the service account, permission should be "Make changes to events".
-
-## Notion API
-
-1. [Create an integration](https://developers.notion.com/docs/create-a-notion-integration) for every workspace you want to sync from.
-   - Integration type: "Internal integration"
-2. Store the integration tokens in `secrets/notion.json`:
-
-   ```json
-   {
-   	"integration_tokens": {
-   		"<workspace_name>": "<integration_token>"
-   	}
-   }
-   ```
-
-3. Add the integration to each database in Notion.
 
 ## ICal
 

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "notion-google-calendar"
+name = "google-calendar-sync"
 version = "0.1.0"
 description = ""
 authors = ["CasperTeirlinck"]

@@ -2,11 +2,9 @@ from typing import Mapping, NamedTuple, Optional
 import pendulum as dt
 import logging
 
-from src.models.database import Database
 from src.models.event import (
     CalendarEventDate,
     ICalCalendarEvent,
-    NotionCalendarEvent,
 )
 from src.models.ical import ICalendar
 
@@ -74,51 +72,6 @@ def parse_event(event: Mapping) -> EventData:
         date.end = date.end.set(tz=tz_end)
 
     return EventData(id=id, title=title, location=location, date=date)
-
-
-def google_to_notion_calendar_event(
-    event: Mapping, database: Database
-) -> NotionCalendarEvent | None:
-    """
-    Parse json response of a google calendar event to a calendar event.
-    """
-
-    # Get event data
-    event_data = parse_event(event)
-
-    # Get Notion-specific data
-    page_id = (
-        event.get("extendedProperties", {})
-        .get("shared", {})
-        .get(NotionCalendarEvent.notion_page_id_property_name)
-    )
-    event_title = (
-        event.get("extendedProperties", {})
-        .get("shared", {})
-        .get(NotionCalendarEvent.notion_title_property_name)
-    )
-    icon_property_value = (
-        event.get("extendedProperties", {})
-        .get("shared", {})
-        .get(NotionCalendarEvent.notion_icon_property_value_property_name)
-    )
-
-    # Validation
-    if not page_id:
-        logger.warning(
-            "An event from google calendar does not have the expected notion page property."
-        )
-        return None
-
-    # Create event
-    return NotionCalendarEvent(
-        database=database,
-        title=event_title,
-        date=event_data.date,
-        notion_page_id=page_id,
-        google_event_id=event_data.id,
-        icon_property_value=icon_property_value,
-    )
 
 
 def google_to_ical_calendar_event(

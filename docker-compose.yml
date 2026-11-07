@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-  notion_google_calendar_sync:
-    container_name: notion_google_calendar_sync
+  google_calendar_sync:
+    container_name: google_calendar_sync
     build:
       context: .
       dockerfile: Dockerfile

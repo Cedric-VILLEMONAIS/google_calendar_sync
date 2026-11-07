@@ -30,7 +30,7 @@ class ICal:
         cutoff_days: int = 30,
     ) -> List[ICalCalendarEvent]:
         """
-        Get all events in google calendar corresponsing to the given database.
+        Get all events in Google Calendar corresponding to the given ICal calendar.
         Only events from the past "cutoff_days" nr of days are retured.
         Only events from of "extend_days" nre of days in the future are retured.
         """

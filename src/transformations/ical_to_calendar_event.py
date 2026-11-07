@@ -21,7 +21,7 @@ def ical_to_calendar_event(
     # Get event data
     ical_uid = str(event["UID"])
     title = str(event["SUMMARY"])
-    status = str(event["STATUS"])
+    status = str(event.get("STATUS", "CONFIRMED"))
     location = str(event.get("LOCATION", ical.vText("")))
     start: dt.DateTime = to_datetime(event.get("DTSTART").dt)
     end: dt.DateTime = to_datetime(event.get("DTEND").dt)
